@@ -1,10 +1,16 @@
-Player PL = new Player();
+Player PLYR = new Player();
 Line LN = new Line();
 Wall WL = new Wall();
+Road RD = new Road();
+Obstacle OBS = new Obstacle();
 
 
 void setup() {
-  size(700, 400);
+  size(1850, 800);
+  for (int i =0; i<xpos.length-1; i++) {
+    xpos[i]=0;
+    ypos[i]=0;
+  }
 }
 
 
@@ -13,10 +19,9 @@ void draw() {
   //draws the background
   background(0);
 
-  // draws the road
-  stroke(0);
-  fill(150);
-  rect(0, 90, width, 250);
+  //---------------------------------------------------------The Road
+  RD.roadDraw();
+
 
   //---------------------------------------------------------The Back Wall
   // draws the walls at the back edge of the road
@@ -26,29 +31,32 @@ void draw() {
   //draws the lines on the road
   LN.drawLine();
 
+  //---------------------------------------------------------The player
+  // draws the barrel
+  OBS.drawObstacle();
+  //allows the barrel to move
+  OBS.ObstacleMove();
 
   //---------------------------------------------------------The player
   // draw the players
-  PL.livePlayer();
+  PLYR.PLYRavatar();
 
   //allows the controls over the car for the player
-  PL.keyPressed();
-  PL.keyReleased();
+  PLYR.keyPressed();
+  PLYR.keyReleased();
 
   //set the boundaries for the player
-  PL.Bound();
+  PLYR.Bound();
 
   // the lights the player can toggle
-  PL.carLights();
+  PLYR.carLights();
 
+  RD.Lights();
+  
   //---------------------------------------------------------The Front Wall
   //draws the wall at the front edge of the road
   WL.frontWall();
 
-
-  //overs canvas in black opacity
-  fill(0, 80);
-  rect(0, 0, 700, 400);
 
   //draws text so the player knows the controls
   fill(255);

@@ -1,4 +1,8 @@
+
 class Wall {
+
+  public Wall() {
+  }
 
   void backWall() {
     //draws the wall
@@ -34,35 +38,37 @@ class Wall {
 
 
 
+
+
   void frontWall() {
     //light post(front wall)
     stroke(0);
     fill(#9B1317);
-    rect(map((frameCount*3.2)%800, -100, 800, 800, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%1200, -100, 1200, 1200, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%1600, -100, 1600, 1600, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%2000, -100, 2000, 2000, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%2400, -100, 2400, 2400, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%2800, -100, 2800, 2800, -100), 200, 30, 150);
-    rect(map((frameCount*3.2)%3200, -100, 3200, 3200, -100), 200, 30, 150);
+    rect(map((frameCount*3.3)%800, -100, 800, 800, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%1200, -100, 1200, 1200, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%1600, -100, 1600, 1600, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%2000, -100, 2000, 2000, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%2400, -100, 2400, 2400, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%2800, -100, 2800, 2800, -100), 400, 30, 150);
+    rect(map((frameCount*3.3)%3200, -100, 3200, 3200, -100), 400, 30, 150);
 
     //draws the wall at the front edge of the road
     stroke(0);
     fill(#580B0D);
-    rect(0, 280, width, 100);
+    rect(0, 480, width, 100);
     // shading under the top of the wall
     noStroke();
     fill(#400C0E);
-    rect(0, 280, width, 50);
+    rect(0, 480, width, 50);
 
     //draws the top side of the wall
     stroke(0);
     fill(#861A1D);
-    rect(0, 290, width, 20);
+    rect(0, 490, width, 20);
 
     //draws the top of the wall
     stroke(0);
     fill(#9B1317);
-    rect(0, 280, width, 15);
+    rect(0, 480, width, 15);
   }
 }

@@ -1,3 +1,4 @@
+int lineCount = 20;
 
 class Line { // identifies that Line is a class with its own code
 
@@ -6,8 +7,10 @@ class Line { // identifies that Line is a class with its own code
 
   // draws the line on the canvas
   void drawLine() {
-    noStroke();
-    fill(255);
-rect(0, 195, width, 10);
-}
+    for (int i = 0; i < lineCount; i++) {
+      fill(255);
+      stroke(0);
+      rect(i*80, 280, 35, 10);
+    }
+  }
 }
