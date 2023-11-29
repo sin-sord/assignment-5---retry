@@ -25,7 +25,7 @@ class Player { // identifies that Player is a class with its own code
     PL1moveRight=false;
     lghtPower = false;
     location = new PVector (width/2, height/2); // players location
-    PL1speed = new PVector (8, 6); //players speed
+    PL1speed = new PVector (6, 5); //players speed
   }
 
 
@@ -62,9 +62,9 @@ class Player { // identifies that Player is a class with its own code
         PL1moveLeft=true;
         noStroke();
         fill(#DB1B27, 50);
-        rect(xpos[i]+55, ypos[i]+2, xpos[i]-73, 10);
-        fill(#FF2938);
-        rect(xpos[i]+55, ypos[i]+6, xpos[i]-70, 5);
+        rect(xpos[i]-45, ypos[i]-20, xpos[i]-50, 10);
+        fill(#FF2938,45);
+        rect(xpos[i]-45, ypos[i]-20, xpos[i]-43, 5);
       } else {
         PL1moveLeft = false;
       }
@@ -74,11 +74,35 @@ class Player { // identifies that Player is a class with its own code
         PL1moveRight = true;
         noStroke();
         fill(#DB1B27, 50);
-        rect(xpos[i]+5, ypos[i]+2, i+50, 10);
-        fill(#FF2938);
-        rect(xpos[i]+5, ypos[i]+6, i+40, 5);
+        rect(xpos[i]-65, ypos[i]-20, i+50, 10);
+        fill(#FF2938,45);
+        rect(xpos[i]-65, ypos[i]-20, i+40, 5);
       } else {
         PL1moveRight = false;
+      }
+      
+      //when the car moves up, the light trail follows it until the end
+      if (key == 'w') {
+        PL1moveUp = true;
+        noStroke();
+        fill(#DB1B27, 50);
+        rect(xpos[i]-50, ypos[i]-20, i+5, 10);
+        fill(#FF2938,45);
+        rect(xpos[i]-50, ypos[i]-20, i+3, 5);
+      } else {
+        PL1moveUp = false;
+      }
+      
+      //when the car moves down, the light trail follows it until the end
+      if (key == 's') {
+        PL1moveDown = true;
+        noStroke();
+        fill(#DB1B27, 50);
+        rect(xpos[i]-50, ypos[i]-20, i+4, 10);
+        fill(#FF2938,45);
+        rect(xpos[i]-50, ypos[i]-20, i+3, 5);
+      } else {
+        PL1moveDown = false;
       }
     }
 
@@ -151,7 +175,10 @@ class Player { // identifies that Player is a class with its own code
     ellipse(location.x+159, location.y-5, 5, 12);
     ellipse(location.x+158, location.y-15, 7, 9);
 
-
+    //back lights
+    stroke(0);
+    fill(#790B0B);
+    rect(location.x-45, location.y-25, 8, 18);
 
 
     //car body - roof
@@ -213,7 +240,7 @@ class Player { // identifies that Player is a class with its own code
 
     stroke(#FEFF00);
     noFill();
-    rect(location.x-50,location.y-5,215,25);
+    rect(location.x-50, location.y-5, 215, 25);
   }
 
   //-----------------------------FRONT LIGHTS
