@@ -228,6 +228,16 @@ class Player { // identifies that Player is a class with its own code
     } else {
       lghtPower = false;
     }
+
+    if (key=='e') {
+      noStroke();
+      fill(random(0, 255), random(0, 255), random(0, 255));
+      rect(location.x+160, location.y-20, width, 10);
+      rect(location.x+117, location.y-20, width, 10);
+    } else {
+      noStroke();
+      noFill();
+    }
   }
 
 

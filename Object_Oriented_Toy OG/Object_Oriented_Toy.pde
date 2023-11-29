@@ -3,6 +3,7 @@ Line LN = new Line();
 Wall WL = new Wall();
 Road RD = new Road();
 Obstacle OBS = new Obstacle();
+Poll PL = new Poll();
 
 
 void setup() {
@@ -25,6 +26,7 @@ void draw() {
 
   //---------------------------------------------------------The Back Wall
   // draws the walls at the back edge of the road
+
   WL.backWall();
 
   //---------------------------------------------------------The Line
@@ -33,7 +35,7 @@ void draw() {
 
   //---------------------------------------------------------The player
   // draws the barrel
-  OBS.drawObstacle();
+  OBS.drawObstacle1();
   //allows the barrel to move
   OBS.ObstacleMove();
 
@@ -53,8 +55,12 @@ void draw() {
 
   RD.Lights();
   
+  OBS.drawObstacle2();
+  
   //---------------------------------------------------------The Front Wall
   //draws the wall at the front edge of the road
+      PL.drawPoll1();
+  PL.pollMove();
   WL.frontWall();
 
 
