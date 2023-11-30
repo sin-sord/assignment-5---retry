@@ -42,11 +42,17 @@ class Obstacle {
     fill(#8E7F7F);
     stroke(0);
     rect(OBSPosition1.x, OBSPosition1.y, 45, 65);
+    noFill();
+    stroke(#FEFF00);
+    rect(OBSPosition1.x, OBSPosition1.y, 45, 65);
   }
 
   void drawObstacle2() {
     fill(#8E7F7F);
     stroke(0);
+    rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
+    noFill();
+    stroke(#FEFF00);
     rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
   }
 

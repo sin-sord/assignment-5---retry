@@ -34,10 +34,7 @@ void draw() {
   LN.drawLine();
 
   //---------------------------------------------------------The player
-  // draws the barrel
-  OBS.drawObstacle1();
-  //allows the barrel to move
-  OBS.ObstacleMove();
+
 
   //---------------------------------------------------------The player
   // draw the players
@@ -53,6 +50,10 @@ void draw() {
   // the lights the player can toggle
   PLYR.carLights();
 
+  // draws the barrel
+  OBS.drawObstacle1();
+  //allows the barrel to move
+  OBS.ObstacleMove();
 
   OBS.drawObstacle2();
 

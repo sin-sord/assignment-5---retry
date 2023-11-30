@@ -28,7 +28,7 @@ class Poll {
     }
 
     pollPosition2.add(pollSpeed2);
-    if (pollPosition2.x < - 180) {
+    if (pollPosition2.x < - 200) {
       pollPosition2.x=4500;
     }
   }

@@ -242,6 +242,7 @@ class Player { // identifies that Player is a class with its own code
     ellipse(location.x+138, location.y-15, 2, 6);
     ellipse(location.x+142, location.y-15, 2, 6);
 
+//adds a border around the avatar where collision should happen if they touch a barrel
     stroke(#FEFF00);
     noFill();
     rect(location.x-50, location.y-5, 215, 25);
