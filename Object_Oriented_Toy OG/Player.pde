@@ -58,16 +58,6 @@ class Player { // identifies that Player is a class with its own code
 
     // when the car moves left, the ligth trail follows it left until it reaches it
     for (int i =0; i<xpos.length; i++) {
-      if (key == 'a') {
-        PL1moveLeft=true;
-        noStroke();
-        fill(#DB1B27, 50);
-        rect(xpos[i]-45, ypos[i]-20, xpos[i]-50, 10);
-        fill(#FF2938,45);
-        rect(xpos[i]-45, ypos[i]-20, xpos[i]-43, 5);
-      } else {
-        PL1moveLeft = false;
-      }
 
       //when the car moves right, the light trail follows it until the end
       if (key == 'd') {
@@ -75,31 +65,31 @@ class Player { // identifies that Player is a class with its own code
         noStroke();
         fill(#DB1B27, 50);
         rect(xpos[i]-65, ypos[i]-20, i+50, 10);
-        fill(#FF2938,45);
+        fill(#FF2938, 45);
         rect(xpos[i]-65, ypos[i]-20, i+40, 5);
       } else {
         PL1moveRight = false;
       }
-      
+
       //when the car moves up, the light trail follows it until the end
       if (key == 'w') {
         PL1moveUp = true;
         noStroke();
         fill(#DB1B27, 50);
         rect(xpos[i]-50, ypos[i]-20, i+5, 10);
-        fill(#FF2938,45);
+        fill(#FF2938, 45);
         rect(xpos[i]-50, ypos[i]-20, i+3, 5);
       } else {
         PL1moveUp = false;
       }
-      
+
       //when the car moves down, the light trail follows it until the end
       if (key == 's') {
         PL1moveDown = true;
         noStroke();
         fill(#DB1B27, 50);
         rect(xpos[i]-50, ypos[i]-20, i+4, 10);
-        fill(#FF2938,45);
+        fill(#FF2938, 45);
         rect(xpos[i]-50, ypos[i]-20, i+3, 5);
       } else {
         PL1moveDown = false;
@@ -179,6 +169,20 @@ class Player { // identifies that Player is a class with its own code
     stroke(0);
     fill(#790B0B);
     rect(location.x-45, location.y-25, 8, 18);
+    rect(location.x-45, location.y-15, 8, 9);
+    if (key=='a') {
+      PL1moveLeft = true;
+      stroke(0);
+      fill(#E52525);
+      rect(location.x-45, location.y-25, 8, 18);
+      rect(location.x-45, location.y-15, 8, 9);
+    } else {
+      PL1moveLeft = false;
+      stroke(0);
+      fill(#790B0B);
+      rect(location.x-45, location.y-25, 8, 18);
+      rect(location.x-45, location.y-15, 8, 9);
+    }
 
 
     //car body - roof

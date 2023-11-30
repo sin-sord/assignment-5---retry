@@ -53,13 +53,12 @@ void draw() {
   // the lights the player can toggle
   PLYR.carLights();
 
-  RD.Lights();
-  
+
   OBS.drawObstacle2();
-  
+
   //---------------------------------------------------------The Front Wall
   //draws the wall at the front edge of the road
-      PL.drawPoll1();
+  PL.drawPoll1();
   PL.pollMove();
   WL.frontWall();
 
