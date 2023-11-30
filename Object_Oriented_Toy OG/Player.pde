@@ -7,6 +7,9 @@ boolean lghtPower;
 PVector location;
 PVector PL1speed;
 
+boolean gameOver;
+
+
 int xBound=155;
 int yBound= 300;
 
@@ -25,13 +28,16 @@ class Player { // identifies that Player is a class with its own code
     PL1moveRight=false;
     lghtPower = false;
     location = new PVector (width/2, height/2); // players location
-    PL1speed = new PVector (6, 5); //players speed
+    PL1speed = new PVector (6.5, 5); //players speed
+//    collisionLocation = new PVector (width/2, height/2); // players location
+//    collisionSpeed = new PVector (6, 5); //players speed
+    gameOver = false;
   }
 
 
   // the player and what they control
   void PLYRavatar() { //draws the player and has the controls implemented into it
-
+print(location);
     //shadow under the car
     noStroke();
     fill(130);
@@ -242,7 +248,7 @@ class Player { // identifies that Player is a class with its own code
     ellipse(location.x+138, location.y-15, 2, 6);
     ellipse(location.x+142, location.y-15, 2, 6);
 
-//adds a border around the avatar where collision should happen if they touch a barrel
+    //adds a border around the avatar where collision should happen if they touch a barrel
     stroke(#FEFF00);
     noFill();
     rect(location.x-50, location.y-5, 215, 25);
@@ -327,5 +333,16 @@ class Player { // identifies that Player is a class with its own code
   void Bound() {
     location.x = constrain(location.x, 10, width-xBound);
     location.y= constrain(location.y, 100, height-yBound);
+  }
+
+
+  void collision() {
+    if (collisionLocation.x == location.x && collisionLocation.y == location.y) {
+      gameOver = true;
+      fill(0);
+      rect(width/2, height/2, 500, height);
+    } else {
+      gameOver = false;
+    }
   }
 }

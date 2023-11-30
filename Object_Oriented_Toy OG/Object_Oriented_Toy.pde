@@ -5,7 +5,6 @@ Road RD = new Road();
 Obstacle OBS = new Obstacle();
 Poll PL = new Poll();
 
-
 void setup() {
   size(1850, 800);
   for (int i =0; i<xpos.length-1; i++) {
@@ -40,6 +39,8 @@ void draw() {
   // draw the players
   PLYR.PLYRavatar();
 
+
+
   //allows the controls over the car for the player
   PLYR.keyPressed();
   PLYR.keyReleased();
@@ -69,4 +70,7 @@ void draw() {
   textSize(20);
   text("use WASD to move", 20, 25);
   text("left-click for lights", 200, 25);
+
+  PLYR.collision();
+
 }

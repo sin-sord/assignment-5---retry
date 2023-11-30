@@ -8,6 +8,9 @@ PVector OBSSpeed1;
 PVector OBSPosition2;
 PVector OBSSpeed2;
 
+PVector collisionLocation;
+PVector collisionSpeed;
+
 class Obstacle {
 
   public Obstacle() {
@@ -20,6 +23,9 @@ class Obstacle {
 
     OBSleft=false;
     OBSright=false;
+
+    collisionLocation = new PVector (0, 300);
+    collisionSpeed = new PVector (-6, 0);
   }
 
   void ObstacleMove() {
@@ -35,6 +41,18 @@ class Obstacle {
       OBSPosition2.x = 1955;
       OBSPosition2.y= random(250, 450);
     }
+
+    collisionLocation.add(collisionSpeed);
+    if (collisionLocation.x < -50) {
+      collisionLocation.x = 1900;
+      collisionLocation.y= random(30, 200);
+    }
+    
+        collisionLocation.add(collisionSpeed);
+    if (collisionLocation.x < -50) {
+      collisionLocation.x = 1955;
+      collisionLocation.y= random(250, 450);
+    }
   }
 
   void drawObstacle1() {
@@ -43,6 +61,7 @@ class Obstacle {
     stroke(0);
     rect(OBSPosition1.x, OBSPosition1.y, 45, 65);
     noFill();
+    //border of barrel
     stroke(#FEFF00);
     rect(OBSPosition1.x, OBSPosition1.y, 45, 65);
   }
@@ -52,6 +71,7 @@ class Obstacle {
     stroke(0);
     rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
     noFill();
+    //border of barrel
     stroke(#FEFF00);
     rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
   }
@@ -68,9 +88,11 @@ class Obstacle {
     // sets the value of location dpending on speed
     if (OBSleft == true) {
       OBSPosition1.x -= OBSSpeed1.x;
+      collisionLocation.x -= collisionSpeed.x;
     }
     if (OBSright == true) {
       OBSPosition1.x += OBSSpeed1.x;
+      collisionLocation.x += collisionSpeed.x;
     }
   }
 

@@ -1,3 +1,5 @@
+float[] wall3D = {10, 20, 30, 40, 50};
+
 class Wall {
 
   public Wall() {
@@ -7,7 +9,7 @@ class Wall {
     //draws the wall
     stroke(0);
     fill(#580B0D);
-    rect(0, 45, width, 50);
+    rect(0, 45, width, wall3D[3]);
     // shading under the top of the wall
     noStroke();
     fill(#400C0E);
@@ -16,7 +18,7 @@ class Wall {
     //draws the top side of the wall
     stroke(0);
     fill(#861A1D);
-    rect(0, 40, width, 20);
+    rect(0, 40, width, wall3D[1]);
 
     //draws the top of the wall
     fill(#861A1D);
