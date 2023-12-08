@@ -1,0 +1,5 @@
+25.What’s the difference between a class and an object?
+- A class is an outline for the object to be used. An object is what can allow a function from a class to be displayed in a void draw()
+	
+26.What is a constructor function? What does it do and when?
+- The constructor function creates an object within the class. It is used to set up an object, making it similar to a setup() function except they use a "new" for each object created from the class. For example, "Player PLYR = new Player();"
