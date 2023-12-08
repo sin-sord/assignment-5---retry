@@ -1,0 +1,13 @@
+19.What’s the difference between a for loop and a while loop?
+- a for loop uses index variables(typcially declared as "i"), this will loop will continue until the statement is no longer true, local variable.
+- a while loop uses a boolean expresion in brackets, the loop will continue until the statement is no longer true
+
+27.Why should each class have its own tab in Processing?
+- classes are used to create functions as objects to be displayed in your main tab, this is helpful when organizing your code.
+
+31.What’s the difference between an array and an ArrayList?
+- Array: a list of data, keyword is "new" to initiate an array
+- Arraylist: a variable number of objects, items can be added or removed using an arraylist.
+
+37.When should you use PVector instead of float variables?
+- "PVector" is used for location, acceloration, and velocity(ex. PVector(x,y);) while "float" is used for a single value(ex. float locationx; float locationy; etc.).
