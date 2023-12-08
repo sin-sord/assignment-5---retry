@@ -2,56 +2,50 @@
 boolean OBSright;
 boolean OBSleft;
 
+int barrelTop;
+int barrelBottom;
+
 PVector OBSPosition1;
 PVector OBSSpeed1;
 
-PVector OBSPosition2;
-PVector OBSSpeed2;
+//PVector OBSPosition2;
+//PVector OBSSpeed2;
 
-PVector collisionLocation;
+PVector collisionLocation1;
+//PVector collisionLocation2;
 PVector collisionSpeed;
 
 class Obstacle {
 
   public Obstacle() {
-    //Barrel 1
-    OBSPosition1 = new PVector (0, 300);
-    OBSSpeed1 = new PVector (-6, 0);
 
-    OBSPosition2 = new PVector (0, 300);
-    OBSSpeed2 = new PVector (-6, 0);
+    barrelTop = 45;
+    barrelBottom = 40;
+
+    OBSPosition1 = new PVector (1900, 275);
+    OBSSpeed1 = new PVector (-7, 0);
 
     OBSleft=false;
     OBSright=false;
 
-    collisionLocation = new PVector (0, 300);
-    collisionSpeed = new PVector (-6, 0);
+    collisionLocation1 = new PVector (0, 300);
+    collisionSpeed = new PVector (-7, 0);
   }
 
   void ObstacleMove() {
+    //   print("OBS1 Location: " + OBSPosition1.x);
     OBSPosition1.add(OBSSpeed1);
     if (OBSPosition1.x < -50) {
-      OBSPosition1.x = 1900;
-      OBSPosition1.y= random(30, 200);
+      OBSPosition1.x = random(1900, 1955);
+      OBSPosition1.y= random(100, 400);
     }
 
 
-    OBSPosition2.add(OBSSpeed2);
-    if (OBSPosition2.x < -50) {
-      OBSPosition2.x = 1955;
-      OBSPosition2.y= random(250, 450);
-    }
 
-    collisionLocation.add(collisionSpeed);
-    if (collisionLocation.x < -50) {
-      collisionLocation.x = 1900;
-      collisionLocation.y= random(30, 200);
-    }
-    
-        collisionLocation.add(collisionSpeed);
-    if (collisionLocation.x < -50) {
-      collisionLocation.x = 1955;
-      collisionLocation.y= random(250, 450);
+    collisionLocation1.add(collisionSpeed);
+    if ( collisionLocation1.x < -50) {
+      collisionLocation1.x = OBSPosition1.x;
+      collisionLocation1.y= OBSPosition1.y;
     }
   }
 
@@ -63,18 +57,9 @@ class Obstacle {
     noFill();
     //border of barrel
     stroke(#FEFF00);
-    rect(OBSPosition1.x, OBSPosition1.y, 45, 65);
+    rect(collisionLocation1.x, collisionLocation1.y+25, 45, 40);
   }
 
-  void drawObstacle2() {
-    fill(#8E7F7F);
-    stroke(0);
-    rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
-    noFill();
-    //border of barrel
-    stroke(#FEFF00);
-    rect(OBSPosition2.x, OBSPosition2.y, 45, 65);
-  }
 
   void obstaclekeyPressed() {  //when the key is pressed, the player will move in that direction
     frameRate(100);
@@ -88,11 +73,11 @@ class Obstacle {
     // sets the value of location dpending on speed
     if (OBSleft == true) {
       OBSPosition1.x -= OBSSpeed1.x;
-      collisionLocation.x -= collisionSpeed.x;
+      collisionLocation1.x -= collisionSpeed.x;
     }
     if (OBSright == true) {
       OBSPosition1.x += OBSSpeed1.x;
-      collisionLocation.x += collisionSpeed.x;
+      collisionLocation1.x += collisionSpeed.x;
     }
   }
 

@@ -6,9 +6,9 @@ boolean lghtPower;
 
 PVector location;
 PVector PL1speed;
+PVector hitbox;
 
 boolean gameOver;
-
 
 int xBound=155;
 int yBound= 300;
@@ -29,15 +29,14 @@ class Player { // identifies that Player is a class with its own code
     lghtPower = false;
     location = new PVector (width/2, height/2); // players location
     PL1speed = new PVector (6.5, 5); //players speed
-//    collisionLocation = new PVector (width/2, height/2); // players location
-//    collisionSpeed = new PVector (6, 5); //players speed
+    hitbox = new PVector (width/2, height/2);
     gameOver = false;
   }
 
 
   // the player and what they control
   void PLYRavatar() { //draws the player and has the controls implemented into it
-print(location);
+    //print(location);
     //shadow under the car
     noStroke();
     fill(130);
@@ -248,10 +247,10 @@ print(location);
     ellipse(location.x+138, location.y-15, 2, 6);
     ellipse(location.x+142, location.y-15, 2, 6);
 
-    //adds a border around the avatar where collision should happen if they touch a barrel
-    stroke(#FEFF00);
-    noFill();
-    rect(location.x-50, location.y-5, 215, 25);
+    ////adds a border around the avatar where collision should happen if they touch a barrel
+    //stroke(#FEFF00);
+    //noFill();
+    //rect(hitbox.x-50, hitbox.y-5, 215, 25);
   }
 
   //-----------------------------FRONT LIGHTS
@@ -280,69 +279,106 @@ print(location);
 
 
   void keyPressed() {  //when the key is pressed, the player will move in that direction
-    frameRate(100);
-    if (key == 'w') {
-      PL1moveUp = true;
+    if (key == ' ') {
+      if (gameOver) {
+        PLYR.reset();
+        gameOver = false;
+      }
     }
-    if (key == 's') {
-      PL1moveDown = true;
-    }
-    if (key == 'a') {
-      PL1moveLeft = true;
-    }
-    if (key == 'd') {
-      PL1moveRight = true;
-    }
-
-    // sets the value of location dpending on speed
-    if (PL1moveUp == true) {
-      location.y -= PL1speed.y;
-    }
-
-
-    if (PL1moveDown == true) {
-      location.y += PL1speed.y;
-    }
-    if (PL1moveLeft == true) {
-      location.x -= PL1speed.x;
-    }
-    if (PL1moveRight == true) {
-      location.x += PL1speed.x;
-    }
+      frameRate(100);
+      if (key == 'w') {
+        PL1moveUp = true;
+      }
+      if (key == 's') {
+        PL1moveDown = true;
+      }
+      if (key == 'a') {
+        PL1moveLeft = true;
+      }
+      if (key == 'd') {
+        PL1moveRight = true;
+      }
+      if (keyCode == 'r') {
+        if (gameOver) {
+          reset();
+          gameOver = false;
+        }
+      }
+      // sets the value of location dpending on speed
+      if (PL1moveUp == true) {
+        location.y -= PL1speed.y;
+        hitbox.y -= PL1speed.y;
+      }
+      if (PL1moveDown == true) {
+        location.y += PL1speed.y;
+        hitbox.y += PL1speed.y;
+      }
+      if (PL1moveLeft == true) {
+        location.x -= PL1speed.x;
+        hitbox.x -= PL1speed.x;
+      }
+      if (PL1moveRight == true) {
+        location.x += PL1speed.x;
+        hitbox.x += PL1speed.x;
+      }
   }
 
 
-  // If the key is released then the player will move without having the key being held
-  void keyReleased() {
-    if (key == 'w') {
-      PL1moveUp = false;
+
+    // If the key is released then the player will move without having the key being held
+    void keyReleased() {
+      if (key == 'w') {
+        PL1moveUp = false;
+      }
+      if (key == 's') {
+        PL1moveDown = false;
+      }
+      if (key == 'a') {
+        PL1moveLeft = false;
+      }
+      if (key == 'd') {
+        PL1moveRight = false;
+      }
     }
-    if (key == 's') {
-      PL1moveDown = false;
-    }
-    if (key == 'a') {
-      PL1moveLeft = false;
-    }
-    if (key == 'd') {
-      PL1moveRight = false;
-    }
-  }
 
 
-  // this makes sure that the player stays within a certain area on the canvas
-  void Bound() {
-    location.x = constrain(location.x, 10, width-xBound);
-    location.y= constrain(location.y, 100, height-yBound);
-  }
+    // this makes sure that the player stays within a certain area on the canvas
+    void Bound() {
+      location.x = constrain(location.x, 10, width-xBound);
+      location.y = constrain(location.y, 100, height-yBound);
 
+      hitbox.x = constrain(hitbox.x, 10, width-xBound);
+      hitbox.y = constrain(hitbox.y, 100, height-yBound);
+    }
 
-  void collision() {
-    if (collisionLocation.x == location.x && collisionLocation.y == location.y) {
-      gameOver = true;
-      fill(0);
-      rect(width/2, height/2, 500, height);
-    } else {
+    void reset() {
       gameOver = false;
+      PLYRavatar();
+      collision();
+    }
+
+
+    // help from this video: https://www.youtube.com/watch?v=0IAuJDzfyQo
+    void collision() {   //this will detect a collision between the obstacle and player
+      float playerboxX = location.x;
+      float playerboxY =  location.y;
+      float obstacleX  = OBSPosition1.x;
+      float obstacleY = OBSPosition1.y;
+      print((playerboxY + height/2) > ( obstacleY  + height/2+30));
+      if ((playerboxX - height/2) > ( obstacleX  - height/2) && (playerboxY + height/2) < ( obstacleY  + height/2) && (playerboxX - height/2) < (obstacleX + height/2) && (playerboxY + height/2) < (obstacleY + height/2)) {
+        gameOver = true;
+        fill(255, 90);
+        stroke(0);
+        strokeWeight(1.5);
+        rect(100, 100, 700, 400);
+        fill(255);
+        textSize(80);
+        text("GAME OVER", 270, 360);
+        fill(0, 255, 60);
+        textSize(50);
+        text("reload the page to replay", 200, 450);
+        stop();
+        print("    true  " + obstacleY);
+      }
     }
   }
-}
